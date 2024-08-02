@@ -1,7 +1,9 @@
+package main;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class Calculator {
+public class Calculator {
     public int add(String numbers) throws IllegalArgumentException {
         if (numbers.isEmpty()) {
             return 0;

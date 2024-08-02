@@ -1,3 +1,6 @@
+package test;
+
+import main.Calculator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -66,6 +69,31 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         int result = calculator.add("2,1001");
         assertEquals(1003, result);
+    }
+
+    @Test
+    public void testAddWithMultipleNewlinesAndCommas() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add("1\n2\n3,4\n5");
+        assertEquals(15, result);
+    }
+
+    @Test
+    public void testAddWithTrailingDelimiter() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add("1,2,3,");
+        assertEquals(6, result);
+    }
+
+    @Test
+    public void testAddWithVeryLargeInput() {
+        Calculator calculator = new Calculator();
+        StringBuilder input = new StringBuilder("1");
+        for (int i = 2; i <= 1000; i++) {
+            input.append(",").append(i);
+        }
+        int result = calculator.add(input.toString());
+        assertEquals(500500, result);
     }
 }
 
